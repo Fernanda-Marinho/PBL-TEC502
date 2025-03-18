@@ -1,5 +1,6 @@
 import socket
 import time
+import random 
 
 
 def run_client():
@@ -12,7 +13,11 @@ def run_client():
 
     while True:
         #msg = input("Message: ")
-        msg = "hello!"
+        #msg = "hello!"
+        battery = random.randint(1,100)
+        msg = str(battery)
+        print(f"bateria: {msg}%")
+        
         client.send(msg.encode("utf-8")[:1024])
 
         response = client.recv(1024)

@@ -20,11 +20,18 @@ def run_server():
         if request.lower() == "close":
             client_socket.send("closed".encode("utf-8"))
             break
+        try:
+            battery = int(request)
+            if battery <= 15:
+                response = "Need recharge"
+            else:
+                response = "Do not need recharge"
+        except ValueError:
+            response = "ERROR: convert type"
 
-        print(f"Received: {request}")
-
-        response = "accepted".encode("utf-8") 
-        client_socket.send(response)
+        # print(f"Received: {request}")
+        # response = "accepted".encode("utf-8") 
+        client_socket.send(response.encode("utf-8"))
 
     client_socket.close()
     print("Connection to client closed")
