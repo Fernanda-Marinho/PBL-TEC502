@@ -1,0 +1,5 @@
+[
+    {"id": 1, "nome": "Posto Norte", "localizacao": "Rua A, Centro", "latitude": -23.55052, "longitude": -46.63331},
+    {"id": 2, "nome": "Posto Sul", "localizacao": "Av. B, Bairro X", "latitude": -23.56288, "longitude": -46.65432},
+    {"id": 3, "nome": "Posto Leste", "localizacao": "Rua C, Zona Leste", "latitude": -23.58942, "longitude": -46.67256}
+]

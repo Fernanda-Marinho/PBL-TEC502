@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "placa": "ABC1234",
+        "bateria": 80,
+        "localizacao": {"latitude": -23.55052, "longitude": -46.633308}
+    },
+    {
+        "id": 2,
+        "placa": "XYZ5678",
+        "bateria": 12,
+        "localizacao": {"latitude": -22.9068, "longitude": -43.1729}
+    }
+]

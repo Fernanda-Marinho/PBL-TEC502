@@ -1,64 +1,63 @@
 import socket
-import time
 import json
 import random
-import os
+import time
+from haversine import calcular_distancia
 
-def load_clients():
-    """Carrega os clientes do arquivo JSON ou cria um novo se não existir."""
-    file_path = "clients.json"
-
-    # Se o arquivo não existir, cria um novo com dados padrão
-    if not os.path.exists(file_path):
-        default_clients = [
-            {"id": 1, "name": "Alice", "battery": 50},
-            {"id": 2, "name": "Bob", "battery": 10},
-            {"id": 3, "name": "Charlie", "battery": 80},
-            {"id": 4, "name": "David", "battery": 30},
-            {"id": 5, "name": "Eve", "battery": 5}
-        ]
-        with open(file_path, "w") as file:
-            json.dump(default_clients, file, indent=4)
-
-    # Agora, lê o arquivo
-    with open(file_path, "r") as file:
+def carregar_cars():
+    with open("cars.json", "r") as file:
         return json.load(file)
 
-def run_client(client_data):
-    """Simula um cliente enviando a porcentagem de bateria ao servidor."""
+def carregar_postos():
+    with open("postos.json", "r") as file:
+        return json.load(file)
+
+def encontrar_posto_proximo(car_lat, car_lon, postos):
+    menor_distancia = float("inf")
+    posto_mais_proximo = None
+
+    for posto in postos:
+        distancia = calcular_distancia(car_lat, car_lon, posto["latitude"], posto["longitude"])
+        if distancia < menor_distancia:
+            menor_distancia = distancia
+            posto_mais_proximo = posto
+
+    return posto_mais_proximo, menor_distancia
+
+def run_client(car):
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    
+
     server_ip = "server"
-    server_port = 8000
+    server_port = 8000  # Porta fixa para os postos
+    client.connect((server_ip, server_port))
 
-    try:
-        client.connect((server_ip, server_port))
-        print(f"Cliente {client_data['id']} ({client_data['name']}) conectado ao server.")
+    print(f"{car['placa']} conectado ao server.")
 
-        while True:
-            # Usa o valor do JSON ou um novo aleatório
-            battery = client_data.get("battery", random.randint(1, 100))
+    while True:
+        car['bateria'] = max(0, car["bateria"]- random.randint(1, 10))
+        msg = json.dumps({
+            "id": car["id"],
+            "placa": car["placa"],
+            "bateria": car["bateria"],
+            "localizacao": car["localizacao"]
+        })
 
-            print(f"Cliente {client_data['id']} ({client_data['name']}) enviando: {battery}%")
-            client.send(str(battery).encode("utf-8")[:1024])
+        print(f"Cliente {car['placa']} enviando: {msg}")
+        client.send(msg.encode("utf-8"))
 
-            response = client.recv(1024).decode("utf-8")
-            print(f"Cliente {client_data['id']} ({client_data['name']}) recebeu: {response}")
+        # Recebe resposta do servidor
+        response = client.recv(1024).decode("utf-8")
+        print(f"Cliente {car['placa']} recebeu: {response}")
 
-            # Atualiza a bateria no JSON (simulação)
-            client_data["battery"] = random.randint(1, 100)  # Simula variação da bateria
+        print(encontrar_posto_proximo(carro["localizacao"]["latitude"], carro["localizacao"]["longitude"], postos))
 
-            time.sleep(5)  # Aguarda antes de enviar outra requisição
+        # Aguarda antes de enviar a próxima atualização
+        time.sleep(5)
 
-    except Exception as e:
-        print(f"Erro no cliente {client_data['id']} ({client_data['name']}): {e}")
+    client.close()
 
-    finally:
-        client.close()
-        print(f"Cliente {client_data['id']} ({client_data['name']}) conexão fechada")
-
-if __name__ == "__main__":
-    clients = load_clients()  # Carrega a lista de clientes do JSON
-
-    for client_data in clients:
-        run_client(client_data)  # Executa cada cliente
+# Carrega a lista de carros e inicia cada cliente em uma thread separada
+carros = carregar_cars()
+postos = carregar_postos()
+for carro in carros:
+    run_client(carro)
