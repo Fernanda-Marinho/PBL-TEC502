@@ -1,5 +1,6 @@
 import socket
 import threading
+import json
 import time
 
 HOST = "0.0.0.0"
@@ -9,7 +10,7 @@ lock = threading.Lock()  # Criando um bloqueio para processar um cliente por vez
 
 def handle_client(client_socket, client_address):
     """Lida com um cliente conectado."""
-    print(f"Cliente {client_address} conectado ao server.")
+    print(f"🚗 Cliente {client_address} conectado ao server.")
 
     try:
         while True:
@@ -19,30 +20,33 @@ def handle_client(client_socket, client_address):
                     break  # Cliente fechou a conexão
 
                 request = request.decode("utf-8").strip()
-                print(f"Cliente {client_address} enviou: {request}%")
-
-                if request.lower() == "close":
-                    client_socket.send("closed".encode("utf-8"))
-                    break
-
+                
+                # 🚨 Tenta decodificar o JSON recebido
                 try:
-                    battery = int(request)
-                    if battery <= 15:
-                        response = "Need recharge"
-                    else:
-                        response = "Do not need recharge"
-                except ValueError:
+                    data = json.loads(request)
+                    bateria = int(data.get("bateria", -1))  # Obtém a bateria e converte para int
+                except (json.JSONDecodeError, ValueError, TypeError):
                     response = "ERROR: convert type"
+                    client_socket.send(response.encode("utf-8"))
+                    continue  # Volta para a próxima iteração sem processar mais
 
-                time.sleep(3)  # ⏳ Espera 3 segundos antes de responder
-                print(f"Servidor enviando resposta para {client_address}: {response}")
+                print(f"📩 Cliente {data.get('placa', 'Desconhecido')} enviou {bateria}% de bateria")
+
+                # Verifica a bateria e define a resposta
+                if bateria <= 15:
+                    response = f"bateria em {bateria}%, Precisa carregar"
+                else:
+                    response = f"bateria em {bateria}%, Nao precisa carregar"
+
+                time.sleep(1)  # Simula processamento antes de enviar resposta
+                print(f"📤 Servidor enviando resposta para {data.get('placa', 'Desconhecido')}: {response}")
                 client_socket.send(response.encode("utf-8"))
 
     except Exception as e:
-        print(f"Erro com {client_address}: {e}")
+        print(f"❌ Erro com {client_address}: {e}")
 
     finally:
-        print(f"Conexão com {client_address} encerrada")
+        print(f"🔌 Conexão com {client_address} encerrada")
         client_socket.close()
 
 def run_server():
@@ -50,7 +54,7 @@ def run_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
-    print(f"Servidor ouvindo em {HOST}:{PORT}")
+    print(f"🖥️ Servidor ouvindo em {HOST}:{PORT}")
 
     while True:
         client_socket, client_address = server.accept()

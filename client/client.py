@@ -2,7 +2,7 @@ import socket
 import json
 import random
 import time
-from haversine import calcular_distancia
+import math
 
 def carregar_cars():
     with open("cars.json", "r") as file:
@@ -12,52 +12,78 @@ def carregar_postos():
     with open("postos.json", "r") as file:
         return json.load(file)
 
-def encontrar_posto_proximo(car_lat, car_lon, postos):
-    menor_distancia = float("inf")
-    posto_mais_proximo = None
+def haversine(lat1, lon1, lat2, lon2):
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    R = 6371000  # Raio da Terra em metros
+    return R * c  # Retorna distância em metros
+
+def encontrar_posto_proximo(lat_carro, lon_carro, postos):
+    menor_distancia = float('inf')
+    posto_proximo = None
 
     for posto in postos:
-        distancia = calcular_distancia(car_lat, car_lon, posto["latitude"], posto["longitude"])
+        lat_posto = posto["latitude"]
+        lon_posto = posto["longitude"]
+        distancia = haversine(lat_carro, lon_carro, lat_posto, lon_posto)
+
         if distancia < menor_distancia:
             menor_distancia = distancia
-            posto_mais_proximo = posto
+            posto_proximo = posto
 
-    return posto_mais_proximo, menor_distancia
+    return posto_proximo["nome"], round(menor_distancia, 2) if posto_proximo else ("Nenhum posto", 0)
 
-def run_client(car):
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+def mover_carro(carro):
+    """ Simula um movimento aleatório do carro. """
+    carro["localizacao"]["latitude"] += random.uniform(-0.0005, 0.0005)
+    carro["localizacao"]["longitude"] += random.uniform(-0.0005, 0.0005)
 
+def run_client(carros):
     server_ip = "server"
-    server_port = 8000  # Porta fixa para os postos
-    client.connect((server_ip, server_port))
-
-    print(f"{car['placa']} conectado ao server.")
+    server_port = 8000  
 
     while True:
-        car['bateria'] = max(0, car["bateria"]- random.randint(1, 10))
-        msg = json.dumps({
-            "id": car["id"],
-            "placa": car["placa"],
-            "bateria": car["bateria"],
-            "localizacao": car["localizacao"]
-        })
+        for carro in carros:
+            mover_carro(carro)  # Atualiza a posição do carro
+            carro["bateria"] = max(0, carro["bateria"] - random.randint(1, 10))  # Reduz bateria
 
-        print(f"Cliente {car['placa']} enviando: {msg}")
-        client.send(msg.encode("utf-8"))
+            msg = json.dumps({
+                "id": carro["id"],
+                "placa": carro["placa"],
+                "bateria": carro["bateria"],
+                "localizacao": carro["localizacao"]
+            })
 
-        # Recebe resposta do servidor
-        response = client.recv(1024).decode("utf-8")
-        print(f"Cliente {car['placa']} recebeu: {response}")
+            try:
+                client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                client.connect((server_ip, server_port))
+                print(f"🚗 Cliente {carro['placa']} enviando: {msg}")
+                client.send(msg.encode("utf-8"))
 
-        print(encontrar_posto_proximo(carro["localizacao"]["latitude"], carro["localizacao"]["longitude"], postos))
+                # Recebe resposta do servidor
+                response = client.recv(1024).decode("utf-8")
+                print(f"📩 Cliente {carro['placa']} recebeu: {response}")
 
-        # Aguarda antes de enviar a próxima atualização
-        time.sleep(5)
+                # Descobre o posto mais próximo
+                posto_proximo = encontrar_posto_proximo(
+                    carro["localizacao"]["latitude"],
+                    carro["localizacao"]["longitude"],
+                    postos
+                )
 
-    client.close()
+                print(f"⛽ Posto mais próximo de {carro['placa']}: {posto_proximo[0]}, {posto_proximo[1]} metros")
 
-# Carrega a lista de carros e inicia cada cliente em uma thread separada
+            except Exception as e:
+                print(f"Erro no cliente {carro['placa']}: {e}")
+            finally:
+                client.close()
+
+        time.sleep(5)  # Aguarda antes de repetir o loop para todos os carros
+
+# Carrega carros e postos
 carros = carregar_cars()
 postos = carregar_postos()
-for carro in carros:
-    run_client(carro)
+run_client(carros)
