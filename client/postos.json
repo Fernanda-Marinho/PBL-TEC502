@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "nome": "Posto Norte",
+        "localizacao": "Rua A, Centro",
+        "latitude": -23.21345,
+        "longitude": -46.79876
+    },
+    {
+        "id": 2,
+        "nome": "Posto Sul",
+        "localizacao": "Av. B, Bairro X",
+        "latitude": -24.89123,
+        "longitude": -47.25589
+    },
+    {
+        "id": 3,
+        "nome": "Posto Leste",
+        "localizacao": "Rua C, Zona Leste",
+        "latitude": -23.92032,
+        "longitude": -45.86541
+    },
+    {
+        "id": 4,
+        "nome": "Posto Oeste",
+        "localizacao": "Av. D, Zona Oeste",
+        "latitude": -22.76389,
+        "longitude": -47.14567
+    },
+    {
+        "id": 5,
+        "nome": "Posto Central",
+        "localizacao": "Rua E, Centro",
+        "latitude": -23.55123,
+        "longitude": -46.63567
+    },
+    {
+        "id": 6,
+        "nome": "Posto Rodovia",
+        "localizacao": "BR-116, Km 200",
+        "latitude": -24.01234,
+        "longitude": -46.78901
+    },
+    {
+        "id": 7,
+        "nome": "Posto Montanha",
+        "localizacao": "Estrada F, Interior",
+        "latitude": -22.45678,
+        "longitude": -45.98765
+    },
+    {
+        "id": 8,
+        "nome": "Posto Litoral",
+        "localizacao": "Av. G, Praia",
+        "latitude": -24.11234,
+        "longitude": -46.32567
+    },
+    {
+        "id": 9,
+        "nome": "Posto Fazenda",
+        "localizacao": "Fazenda H, Zona Rural",
+        "latitude": -23.33456,
+        "longitude": -47.45678
+    },
+    {
+        "id": 10,
+        "nome": "Posto Aeroporto",
+        "localizacao": "Av. I, Aeroporto",
+        "latitude": -22.89012,
+        "longitude": -46.78945
+    }
+]
