@@ -18,7 +18,7 @@ def haversine(lat1, lon1, lat2, lon2):
     dlon = lon2 - lon1
     a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    R = 6371000  # Raio da Terra em metros
+    R = 6371 # Raio da Terra em metros
     return R * c  # Retorna distância em metros
 
 def encontrar_posto_proximo(lat_carro, lon_carro, postos):
@@ -74,7 +74,7 @@ def run_client(carros):
                     postos
                 )
 
-                print(f"⛽ Posto mais próximo de {carro['placa']}: {posto_proximo[0]}, {posto_proximo[1]} metros")
+                print(f"⛽ Posto mais próximo de {carro['placa']}: {posto_proximo[0]}, {posto_proximo[1]} KMs")
 
             except Exception as e:
                 print(f"Erro no cliente {carro['placa']}: {e}")
