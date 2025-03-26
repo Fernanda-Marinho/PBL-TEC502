@@ -4,7 +4,8 @@
         "nome": "Posto Norte",
         "localizacao": "Rua A, Centro",
         "latitude": -23.21345,
-        "longitude": -46.79876
+        "longitude": -46.79876,
+        "carros": 
     },
     {
         "id": 2,
