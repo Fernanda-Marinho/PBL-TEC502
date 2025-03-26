@@ -45,6 +45,8 @@ def run_client(carros):
     server_ip = "server"
     server_port = 8000  
 
+    car = create_client(1)
+
     while True:
         for carro in carros:
             mover_carro(carro)  # Atualiza a posição do carro
