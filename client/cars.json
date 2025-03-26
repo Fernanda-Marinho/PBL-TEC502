@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "placa": "CAR0001",
+        "bateria": 72,
+        "localizacao": {
+            "latitude": -23.46831771285306,
+            "longitude": -46.6365152491733
+        }
+    },
+    {
+        "id": 2,
+        "placa": "CAR0002",
+        "bateria": 56,
+        "localizacao": {
+            "latitude": -23.29035413657965,
+            "longitude": -46.9779535634252
+        }
+    },
+    {
+        "id": 3,
+        "placa": "CAR0003",
+        "bateria": 85,
+        "localizacao": {
+            "latitude": -23.115308251543006,
+            "longitude": -46.332512184348635
+        }
+    },
+    {
+        "id": 4,
+        "placa": "CAR0004",
+        "bateria": 50,
+        "localizacao": {
+            "latitude": -23.563576382693697,
+            "longitude": -46.741815850163765
+        }
+    },
+    {
+        "id": 5,
+        "placa": "CAR0005",
+        "bateria": 99,
+        "localizacao": {
+            "latitude": -23.85849801578888,
+            "longitude": -46.52146808624828
+        }
+    },
+    {
+        "id": 6,
+        "placa": "CAR0006",
+        "bateria": 14,
+        "localizacao": {
+            "latitude": -23.710315354286124,
+            "longitude": -46.725177028282945
+        }
+    },
+    {
+        "id": 7,
+        "placa": "CAR0007",
+        "bateria": 32,
+        "localizacao": {
+            "latitude": -23.376271648689762,
+            "longitude": -46.5217134267808
+        }
+    },
+    {
+        "id": 8,
+        "placa": "CAR0008",
+        "bateria": 62,
+        "localizacao": {
+            "latitude": -23.409256030808415,
+            "longitude": -46.55460363370375
+        }
+    },
+    {
+        "id": 9,
+        "placa": "CAR0009",
+        "bateria": 92,
+        "localizacao": {
+            "latitude": -23.13524731791699,
+            "longitude": -46.71026121142615
+        }
+    },
+    {
+        "id": 10,
+        "placa": "CAR0010",
+        "bateria": 78,
+        "localizacao": {
+            "latitude": -23.451221746313118,
+            "longitude": -46.62493989432919
+        }
+    }
+]
