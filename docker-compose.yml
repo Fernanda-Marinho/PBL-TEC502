@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  posto1:
+    image: posto-recharge
+    container_name: posto1
+    ports:
+      - "8000:8000"
+    environment:
+      POSTO_ID: posto1
+      NOME: "Posto Central"
+      LATITUDE: -12.970
+      LONGITUDE: -38.480
+      SERVER_HOST: host.docker.internal
+
+  posto2:
+    image: posto-recharge
+    container_name: posto2
+    ports:
+      - "8001:8000"
+    environment:
+      POSTO_ID: posto2
+      NOME: "Posto Norte"
+      LATITUDE: -12.960
+      LONGITUDE: -38.470
+      SERVER_HOST: host.docker.internal
+
+  posto3:
+    image: posto-recharge
+    container_name: posto3
+    ports:
+      - "8002:8000"
+    environment:
+      POSTO_ID: posto3
+      NOME: "Posto Sul"
+      LATITUDE: -13.000
+      LONGITUDE: -38.510
+      SERVER_HOST: host.docker.internal
+
+  posto4:
+    image: posto-recharge
+    container_name: posto4
+    ports:
+      - "8003:8000"
+    environment:
+      POSTO_ID: posto4
+      NOME: "Posto Oeste"
+      LATITUDE: -12.970
+      LONGITUDE: -38.530
+      SERVER_HOST: host.docker.internal
