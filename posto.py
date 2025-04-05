@@ -52,7 +52,7 @@ def handle_client(conn, addr):
             return
 
         carro = json.loads(data)
-        print(f"🚗 Carro {carro['placa']} conectado ao posto!")
+        print(f"Carro {carro['placa']} conectado ao posto!")
 
         fila_de_espera.append(carro["placa"])
 

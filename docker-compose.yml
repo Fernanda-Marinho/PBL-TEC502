@@ -1,4 +1,5 @@
-version: '3.8'
+
+
 
 services:
   posto1:
@@ -48,3 +49,83 @@ services:
       LATITUDE: -12.970
       LONGITUDE: -38.530
       SERVER_HOST: host.docker.internal
+
+
+
+  posto5:
+    image: posto-recharge
+    container_name: posto5
+    ports:
+      - "8004:8000"
+    environment:
+      POSTO_ID: posto5
+      NOME: "Posto Leste"
+      LATITUDE: -12.950
+      LONGITUDE: -38.490
+      SERVER_HOST: host.docker.internal
+
+  posto6: 
+    image: posto-recharge
+    container_name: posto6
+    ports:
+      - "8005:8000"
+    environment:
+      POSTO_ID: posto6
+      NOME: "Posto Sudoeste"
+      LATITUDE: -9.940
+      LONGITUDE: -38.480
+      SERVER_HOST: host.docker.internal
+      
+      
+  posto7: 
+    image: posto-recharge
+    container_name: posto7
+    ports:
+      - "8006:8000"
+    environment:
+      POSTO_ID: posto7
+      NOME: "Posto Noroeste"
+      LATITUDE: -9.960
+      LONGITUDE: -38.470
+      SERVER_HOST: host.docker.internal
+
+    
+
+  posto8:
+    image: posto-recharge
+    container_name: posto8
+    ports:
+      - "8007:8000"
+    environment:
+      POSTO_ID: posto8
+      NOME: "Posto Nordeste"
+      LATITUDE: -9.950
+      LONGITUDE: -38.450
+      SERVER_HOST: host.docker.internal
+
+  posto9:
+    image: posto-recharge
+    container_name: posto9
+    ports:
+      - "8008:8000"
+    environment:
+      POSTO_ID: posto9
+      NOME: "Posto Sudeste"
+      LATITUDE: -13.010
+      LONGITUDE: -38.460
+      SERVER_HOST: host.docker.internal
+
+  posto10:
+    image: posto-recharge
+    container_name: posto10
+    ports:
+      - "8009:8000"
+    environment:
+      POSTO_ID: posto10
+      NOME: "Posto Extra Central"
+      LATITUDE: -12.975
+      LONGITUDE: -38.485
+      SERVER_HOST: host.docker.internal
+
+  
+
