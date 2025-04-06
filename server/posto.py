@@ -4,11 +4,10 @@ import logging
 import sys
 import os
 
-# Configuração de logging
+#configuracao login
 logging.basicConfig(level=logging.INFO, format='%(name)s | %(levelname)s | %(message)s')
 logger = logging.getLogger("root")
 
-# Função principal
 def main():
     id_posto = os.environ.get("ID_POSTO", "posto_padrao")
     latitude = float(os.environ.get("LATITUDE", -12.97))
@@ -20,9 +19,11 @@ def main():
     logger.info(f"Localização: Lat={latitude}, Long={longitude}")
 
     try:
+        """tentativa e conexao com a porta exposta"""
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             sock.connect((servidor_central, porta))
 
+            #enviando as informacoes
             mensagem = {
                 "tipo": "posto",
                 "id_posto": id_posto,

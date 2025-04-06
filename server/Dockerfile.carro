@@ -1,12 +1,15 @@
-# Dockerfile.carro
-
+#usa imagem do python
 FROM python:3.11-slim
 
+#define diretorio que vai trabalhar dentro do container
 WORKDIR /app
 
+#copia os arquivos necessários para dentro do container
 COPY carro.py ./
 COPY requirements.txt ./
 
+#instala as dependências
 RUN pip install --no-cache-dir -r requirements.txt
 
+#comando para iniciar o servidor central
 CMD ["python", "carro.py"]

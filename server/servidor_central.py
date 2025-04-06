@@ -3,18 +3,18 @@ import json
 import threading
 import logging
 
-# Configuração de logging
+#config login
 logging.basicConfig(level=logging.DEBUG, format='%(name)s | %(levelname)s | %(message)s')
 logger = logging.getLogger("servidor_central")
 
-# Lista global para armazenar os postos
+#lista para armazenar os postos
 postos_de_recarga = []
 
-# Função para calcular a distância aproximada entre dois pontos geográficos
+#funcao para calcular a distncia entre dois pontos
 def calcular_distancia(lat1, lon1, lat2, lon2):
     return ((lat1 - lat2)**2 + (lon1 - lon2)**2)**0.5
 
-# Função para lidar com cada cliente (carro ou posto)
+#funcao para lidar com posto ou carro
 def lidar_com_cliente(conexao, endereco):
     try:
         dados = conexao.recv(4096).decode('utf-8')
@@ -29,7 +29,7 @@ def lidar_com_cliente(conexao, endereco):
             return
 
         tipo = mensagem.get("tipo")
-
+        
         if tipo == "posto":
             id_posto = mensagem.get("id_posto")
             latitude = mensagem.get("latitude")

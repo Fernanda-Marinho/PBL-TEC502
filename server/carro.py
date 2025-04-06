@@ -11,7 +11,7 @@ def carro_main():
     HOST = 'servidor_central'
     PORT = 9000
 
-    # Alinha com docker-compose
+    # informacoes do carro
     id_carro = os.getenv('PLACA', 'carro_padrao')
     latitude = float(os.getenv('LOCALIZACAO_LAT', '-12.97'))
     longitude = float(os.getenv('LOCALIZACAO_LON', '-38.48'))
@@ -25,6 +25,7 @@ def carro_main():
 
     logger.info(f"Iniciando carro {id_carro} na localização (Lat={latitude}, Lon={longitude})")
 
+    #tempo para garantir conexao
     time.sleep(5)
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

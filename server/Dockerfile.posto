@@ -1,6 +1,17 @@
+#usa imagem do python
 FROM python:3.11-slim
+
+#define diretorio que vai trabalhar dentro do container
 WORKDIR /app
+
+#copia os arquivos necessários para dentro do container
 COPY . .
+
+#instala as dependências
 RUN if [ -s requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi
+
+#expõe a porta usada pelo servidor
 EXPOSE 8000
+
+#comando para iniciar o servidor central
 CMD ["python","-u", "posto.py"]

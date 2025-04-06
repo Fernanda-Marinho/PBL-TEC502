@@ -1,18 +1,18 @@
-# Usa uma imagem base do Python
+#usa imagem do python
 FROM python:3.11-slim
 
-# Define o diretório de trabalho dentro do container
+#define diretorio que vai trabalhar dentro do container
 WORKDIR /app
 
-# Copia os arquivos necessários para dentro do container
+#copia os arquivos necessários para dentro do container
 COPY servidor_central.py .
 COPY requirements.txt .
 
-# Instala as dependências
+#instala as dependências
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta usada pelo servidor
+#expõe a porta usada pelo servidor
 EXPOSE 9000
 
-# Comando para iniciar o servidor central
+#comando para iniciar o servidor central
 CMD ["python", "servidor_central.py"]
