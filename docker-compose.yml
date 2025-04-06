@@ -17,8 +17,8 @@ services:
     container_name: posto1
     environment:
       - POSTO_ID=posto1
-      - LOCALIZACAO_LAT=-12.97
-      - LOCALIZACAO_LON=-38.48
+      - LOCALIZACAO_LAT=-12.90
+      - LOCALIZACAO_LON=-38.50
     depends_on:
       - servidor_central
     networks:
@@ -31,8 +31,8 @@ services:
     container_name: posto2
     environment:
       - POSTO_ID=posto2
-      - LOCALIZACAO_LAT=-12.98
-      - LOCALIZACAO_LON=-38.47
+      - LOCALIZACAO_LAT=-13.10
+      - LOCALIZACAO_LON=-38.70
     depends_on:
       - servidor_central
     networks:
@@ -45,8 +45,8 @@ services:
     container_name: posto3
     environment:
       - POSTO_ID=posto3
-      - LOCALIZACAO_LAT=-12.99
-      - LOCALIZACAO_LON=-38.46
+      - LOCALIZACAO_LAT=-13.30
+      - LOCALIZACAO_LON=-38.90
     depends_on:
       - servidor_central
     networks:
@@ -59,8 +59,8 @@ services:
     container_name: posto4
     environment:
       - POSTO_ID=posto4
-      - LOCALIZACAO_LAT=-13.00
-      - LOCALIZACAO_LON=-38.45
+      - LOCALIZACAO_LAT=-13.50
+      - LOCALIZACAO_LON=-39.10
     depends_on:
       - servidor_central
     networks:
@@ -73,8 +73,8 @@ services:
     container_name: posto5
     environment:
       - POSTO_ID=posto5
-      - LOCALIZACAO_LAT=-13.01
-      - LOCALIZACAO_LON=-38.44
+      - LOCALIZACAO_LAT=-13.70
+      - LOCALIZACAO_LON=-39.30
     depends_on:
       - servidor_central
     networks:
@@ -87,8 +87,8 @@ services:
     container_name: posto6
     environment:
       - POSTO_ID=posto6
-      - LOCALIZACAO_LAT=-13.02
-      - LOCALIZACAO_LON=-38.43
+      - LOCALIZACAO_LAT=-13.90
+      - LOCALIZACAO_LON=-39.50
     depends_on:
       - servidor_central
     networks:
@@ -101,8 +101,8 @@ services:
     container_name: posto7
     environment:
       - POSTO_ID=posto7
-      - LOCALIZACAO_LAT=-13.03
-      - LOCALIZACAO_LON=-38.42
+      - LOCALIZACAO_LAT=-14.10
+      - LOCALIZACAO_LON=-39.70
     depends_on:
       - servidor_central
     networks:
@@ -115,8 +115,8 @@ services:
     container_name: posto8
     environment:
       - POSTO_ID=posto8
-      - LOCALIZACAO_LAT=-13.04
-      - LOCALIZACAO_LON=-38.41
+      - LOCALIZACAO_LAT=-14.30
+      - LOCALIZACAO_LON=-39.90
     depends_on:
       - servidor_central
     networks:
@@ -129,8 +129,8 @@ services:
     container_name: posto9
     environment:
       - POSTO_ID=posto9
-      - LOCALIZACAO_LAT=-13.05
-      - LOCALIZACAO_LON=-38.40
+      - LOCALIZACAO_LAT=-14.50
+      - LOCALIZACAO_LON=-40.10
     depends_on:
       - servidor_central
     networks:
@@ -143,8 +143,8 @@ services:
     container_name: posto10
     environment:
       - POSTO_ID=posto10
-      - LOCALIZACAO_LAT=-13.06
-      - LOCALIZACAO_LON=-38.39
+      - LOCALIZACAO_LAT=-14.70
+      - LOCALIZACAO_LON=-40.30
     depends_on:
       - servidor_central
     networks:
@@ -158,8 +158,8 @@ services:
     container_name: carro1
     environment:
       - PLACA=CAR001
-      - LOCALIZACAO_LAT=-12.95
-      - LOCALIZACAO_LON=-38.47
+      - LOCALIZACAO_LAT=-12.91
+      - LOCALIZACAO_LON=-38.51
     depends_on:
       - servidor_central
     networks:
@@ -172,8 +172,8 @@ services:
     container_name: carro2
     environment:
       - PLACA=CAR002
-      - LOCALIZACAO_LAT=-12.96
-      - LOCALIZACAO_LON=-38.49
+      - LOCALIZACAO_LAT=-13.11
+      - LOCALIZACAO_LON=-38.69
     depends_on:
       - servidor_central
     networks:
@@ -186,8 +186,8 @@ services:
     container_name: carro3
     environment:
       - PLACA=CAR003
-      - LOCALIZACAO_LAT=-12.94
-      - LOCALIZACAO_LON=-38.48
+      - LOCALIZACAO_LAT=-13.31
+      - LOCALIZACAO_LON=-38.91
     depends_on:
       - servidor_central
     networks:
@@ -200,8 +200,8 @@ services:
     container_name: carro4
     environment:
       - PLACA=CAR004
-      - LOCALIZACAO_LAT=-12.93
-      - LOCALIZACAO_LON=-38.46
+      - LOCALIZACAO_LAT=-13.49
+      - LOCALIZACAO_LON=-39.09
     depends_on:
       - servidor_central
     networks:
@@ -214,8 +214,8 @@ services:
     container_name: carro5
     environment:
       - PLACA=CAR005
-      - LOCALIZACAO_LAT=-12.92
-      - LOCALIZACAO_LON=-38.45
+      - LOCALIZACAO_LAT=-13.71
+      - LOCALIZACAO_LON=-39.29
     depends_on:
       - servidor_central
     networks:
@@ -228,8 +228,8 @@ services:
     container_name: carro6
     environment:
       - PLACA=CAR006
-      - LOCALIZACAO_LAT=-12.91
-      - LOCALIZACAO_LON=-38.44
+      - LOCALIZACAO_LAT=-13.91
+      - LOCALIZACAO_LON=-39.49
     depends_on:
       - servidor_central
     networks:
@@ -242,8 +242,8 @@ services:
     container_name: carro7
     environment:
       - PLACA=CAR007
-      - LOCALIZACAO_LAT=-12.90
-      - LOCALIZACAO_LON=-38.43
+      - LOCALIZACAO_LAT=-14.09
+      - LOCALIZACAO_LON=-39.69
     depends_on:
       - servidor_central
     networks:
@@ -256,8 +256,8 @@ services:
     container_name: carro8
     environment:
       - PLACA=CAR008
-      - LOCALIZACAO_LAT=-12.89
-      - LOCALIZACAO_LON=-38.42
+      - LOCALIZACAO_LAT=-14.29
+      - LOCALIZACAO_LON=-39.89
     depends_on:
       - servidor_central
     networks:
@@ -270,8 +270,8 @@ services:
     container_name: carro9
     environment:
       - PLACA=CAR009
-      - LOCALIZACAO_LAT=-12.88
-      - LOCALIZACAO_LON=-38.41
+      - LOCALIZACAO_LAT=-14.51
+      - LOCALIZACAO_LON=-40.11
     depends_on:
       - servidor_central
     networks:
@@ -284,8 +284,8 @@ services:
     container_name: carro10
     environment:
       - PLACA=CAR010
-      - LOCALIZACAO_LAT=-12.87
-      - LOCALIZACAO_LON=-38.40
+      - LOCALIZACAO_LAT=-14.69
+      - LOCALIZACAO_LON=-40.29
     depends_on:
       - servidor_central
     networks:

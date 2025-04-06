@@ -9,9 +9,9 @@ logging.basicConfig(level=logging.INFO, format='%(name)s | %(levelname)s | %(mes
 logger = logging.getLogger("root")
 
 def main():
-    id_posto = os.environ.get("ID_POSTO", "posto_padrao")
-    latitude = float(os.environ.get("LATITUDE", -12.97))
-    longitude = float(os.environ.get("LONGITUDE", -38.48))
+    id_posto = os.environ.get("POSTO_ID", "posto_padrao")
+    latitude = float(os.environ.get("LOCALIZACAO_LAT", -12.97))
+    longitude = float(os.environ.get("LOCALIZACAO_LON", -38.48))
     servidor_central = os.environ.get("SERVIDOR_CENTRAL", "servidor_central")
     porta = int(os.environ.get("PORTA_SERVIDOR", 9000))
 
