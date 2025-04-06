@@ -3,6 +3,7 @@ import json
 import logging
 import sys
 import os
+import time
 
 #configuracao login
 logging.basicConfig(level=logging.INFO, format='%(name)s | %(levelname)s | %(message)s')
@@ -44,6 +45,7 @@ def main():
         logger.error(f"[POSTO {id_posto}] Erro ao se comunicar com o servidor: {e}")
 
     logger.info(f" Posto de recarga rodando em 0.0.0.0:8000")
+    time.sleep(1)
 
 if __name__ == "__main__":
     main()
