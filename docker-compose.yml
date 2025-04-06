@@ -1,27 +1,226 @@
-version: '3.8'
-
 services:
-  server:
+  servidor_central:
     build:
-      context: .
-      dockerfile: server/Dockerfile.server
+      context: ./server
+      dockerfile: Dockerfile.server
+    container_name: servidor_central
     ports:
-      - "8000:8000"
+      - "9000:9000"
     networks:
-      - mynetwork
+      - rede-veicular
 
-  client:
+  # POSTOS DE RECARGA
+  posto1:
     build:
-      context: .
-      dockerfile: client/Dockerfile.client
+      context: ./server
+      dockerfile: Dockerfile.posto
+    container_name: posto1
+    environment:
+      - POSTO_ID=posto1
+      - LOCALIZACAO_LAT=-12.90
+      - LOCALIZACAO_LON=-38.50
     depends_on:
-      - server
+      - servidor_central
     networks:
-      - mynetwork
-    command: ["python", "client.py"]
-    stdin_open: true
-    tty: true
+      - rede-veicular
+
+  posto2:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.posto
+    container_name: posto2
+    environment:
+      - POSTO_ID=posto2
+      - LOCALIZACAO_LAT=-13.10
+      - LOCALIZACAO_LON=-38.70
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  posto3:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.posto
+    container_name: posto3
+    environment:
+      - POSTO_ID=posto3
+      - LOCALIZACAO_LAT=-13.30
+      - LOCALIZACAO_LON=-38.90
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  posto4:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.posto
+    container_name: posto4
+    environment:
+      - POSTO_ID=posto4
+      - LOCALIZACAO_LAT=-13.50
+      - LOCALIZACAO_LON=-39.10
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  posto5:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.posto
+    container_name: posto5
+    environment:
+      - POSTO_ID=posto5
+      - LOCALIZACAO_LAT=-13.70
+      - LOCALIZACAO_LON=-39.30
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  # CARROS
+  carro1:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro1
+    environment:
+      - PLACA=CAR001
+      - LOCALIZACAO_LAT=-12.91
+      - LOCALIZACAO_LON=-38.51
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro2:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro2
+    environment:
+      - PLACA=CAR002
+      - LOCALIZACAO_LAT=-13.11
+      - LOCALIZACAO_LON=-38.69
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro3:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro3
+    environment:
+      - PLACA=CAR003
+      - LOCALIZACAO_LAT=-13.31
+      - LOCALIZACAO_LON=-38.91
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro4:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro4
+    environment:
+      - PLACA=CAR004
+      - LOCALIZACAO_LAT=-13.49
+      - LOCALIZACAO_LON=-39.09
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro5:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro5
+    environment:
+      - PLACA=CAR005
+      - LOCALIZACAO_LAT=-13.71
+      - LOCALIZACAO_LON=-39.29
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro6:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro6
+    environment:
+      - PLACA=CAR006
+      - LOCALIZACAO_LAT=-13.91
+      - LOCALIZACAO_LON=-39.49
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro7:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro7
+    environment:
+      - PLACA=CAR007
+      - LOCALIZACAO_LAT=-14.09
+      - LOCALIZACAO_LON=-39.69
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro8:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro8
+    environment:
+      - PLACA=CAR008
+      - LOCALIZACAO_LAT=-14.29
+      - LOCALIZACAO_LON=-39.89
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro9:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro9
+    environment:
+      - PLACA=CAR009
+      - LOCALIZACAO_LAT=-14.51
+      - LOCALIZACAO_LON=-40.11
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
+
+  carro10:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.carro
+    container_name: carro10
+    environment:
+      - PLACA=CAR010
+      - LOCALIZACAO_LAT=-14.69
+      - LOCALIZACAO_LON=-40.29
+    depends_on:
+      - servidor_central
+    networks:
+      - rede-veicular
 
 networks:
-  mynetwork:
+  rede-veicular:
     driver: bridge
