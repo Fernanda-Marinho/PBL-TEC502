@@ -90,6 +90,7 @@ services:
       - PLACA=CAR001
       - LOCALIZACAO_LAT=-12.91
       - LOCALIZACAO_LON=-38.51
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -104,6 +105,7 @@ services:
       - PLACA=CAR002
       - LOCALIZACAO_LAT=-13.11
       - LOCALIZACAO_LON=-38.69
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -118,6 +120,7 @@ services:
       - PLACA=CAR003
       - LOCALIZACAO_LAT=-13.31
       - LOCALIZACAO_LON=-38.91
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -132,6 +135,7 @@ services:
       - PLACA=CAR004
       - LOCALIZACAO_LAT=-13.49
       - LOCALIZACAO_LON=-39.09
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -146,6 +150,7 @@ services:
       - PLACA=CAR005
       - LOCALIZACAO_LAT=-13.71
       - LOCALIZACAO_LON=-39.29
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -160,6 +165,7 @@ services:
       - PLACA=CAR006
       - LOCALIZACAO_LAT=-13.91
       - LOCALIZACAO_LON=-39.49
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -174,6 +180,7 @@ services:
       - PLACA=CAR007
       - LOCALIZACAO_LAT=-14.09
       - LOCALIZACAO_LON=-39.69
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -188,6 +195,7 @@ services:
       - PLACA=CAR008
       - LOCALIZACAO_LAT=-14.29
       - LOCALIZACAO_LON=-39.89
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -202,6 +210,7 @@ services:
       - PLACA=CAR009
       - LOCALIZACAO_LAT=-14.51
       - LOCALIZACAO_LON=-40.11
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
@@ -216,6 +225,7 @@ services:
       - PLACA=CAR010
       - LOCALIZACAO_LAT=-14.69
       - LOCALIZACAO_LON=-40.29
+      - SERVIDOR_HOST = 172.16.103.4
     depends_on:
       - servidor_central
     networks:
