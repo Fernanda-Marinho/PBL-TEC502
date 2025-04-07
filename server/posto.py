@@ -13,7 +13,7 @@ def main():
     id_posto = os.environ.get("POSTO_ID", "posto_padrao")
     latitude = float(os.environ.get("LOCALIZACAO_LAT", -12.97))
     longitude = float(os.environ.get("LOCALIZACAO_LON", -38.48))
-    servidor_central = os.environ.get("SERVIDOR_CENTRAL", "servidor_central")
+    servidor_central = os.environ.get("SERVIDOR_CENTRAL", "172.16.103.4")
     porta = int(os.environ.get("PORTA_SERVIDOR", 9000))
 
     logger.info(f"Inicializando Posto {id_posto} (ID: {id_posto})")
