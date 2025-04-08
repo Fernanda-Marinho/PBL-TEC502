@@ -145,7 +145,7 @@ Todas as mensagens são objetos JSON. Abaixo estão os principais tipos:
 
 1. **Clonar o repositório**:
    ```bash
-   git clone https://github.com/seuusuario/PBL-TEC502-main.git
+   git clone https://github.com/(https://github.com/Fernanda-Marinho/PBL-TEC502/tree/main)/PBL-TEC502-main.git
    cd PBL-TEC502-main
    ```
 
